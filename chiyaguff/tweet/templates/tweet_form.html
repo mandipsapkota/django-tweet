@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Chiyaguff | Tweet
+{% endblock %}
+
+{% block content %}
+
+<h2 class="text-xl font-semibold m-auto p-2">
+    {% if form.instance.pk %}
+    Edit Tweet
+    {% else %}
+    Create Tweet
+
+    {% endif %}
+</h2>
+
+<form method="post" enctype="multipart/form-data" class="p-4 flex gap-2 flex-col">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="p-4 bg-green-800 text-lime-50 font-semibold w-max">Submit</button>
+</form>
+
+<a href="{% url 'tweet_list' %}" class="text-blue-900">Back to tweet list</a>
+
+{% endblock %}
